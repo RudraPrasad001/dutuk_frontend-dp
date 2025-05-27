@@ -9,7 +9,7 @@ const UserAuth = () => {
         <Text style={authButtonStyle.buttonText}>Login</Text>
       </Pressable>
 
-      <Pressable style={authButtonStyle.button}>
+      <Pressable style={authButtonStyle.buttonSecondary}>
         <Text style={authButtonStyle.buttonText}>Register</Text>
       </Pressable>
     </View>

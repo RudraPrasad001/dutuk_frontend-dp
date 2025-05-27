@@ -7,9 +7,16 @@ const authButtonStyle = StyleSheet.create({
     backgroundColor: "black",
     justifyContent: "center",
     borderRadius: 50,
-
     elevation: 10,
-
+    margin: 5,
+  },
+  buttonSecondary: {
+    width: 250,
+    height: 75,
+    backgroundColor: "gray",
+    justifyContent: "center",
+    borderRadius: 50,
+    elevation: 10,
     margin: 5,
   },
   buttonText: {
