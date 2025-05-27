@@ -7,12 +7,13 @@ export default function RootLayout() {
       <Stack.Screen
         name="UserLogin"
         options={{
-          title: "Login",
+          title: "",
           headerTitleStyle: {
             fontWeight: "bold",
             fontSize: 20,
           },
-          animation: "default",
+          headerShadowVisible: false,
+          animation: "fade",
         }}
       />
     </Stack>
