@@ -20,6 +20,21 @@ export default function RootLayout() {
           animation: "fade",
         }}
       />
+      <Stack.Screen
+        name="UserRegister"
+        options={{
+          title: "",
+          headerStyle: {
+            backgroundColor: "#F2F2F2",
+          },
+          headerTitleStyle: {
+            fontWeight: "bold",
+            fontSize: 20,
+          },
+          headerShadowVisible: false,
+          animation: "fade",
+        }}
+      />
     </Stack>
   );
 }

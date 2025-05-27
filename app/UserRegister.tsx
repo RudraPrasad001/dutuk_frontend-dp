@@ -10,7 +10,7 @@ import {
   View,
 } from "react-native";
 
-const UserLogin = () => {
+const UserRegister = () => {
   const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -53,13 +53,21 @@ const UserLogin = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View>
-        <Text style={styles.welcomeBackText}>Welcome back!</Text>
+        <Text style={styles.welcomeBackText}>Let's get started</Text>
       </View>
 
       <View style={styles.inputSection}>
         <Text style={styles.label}>E-mail</Text>
         <TextInput style={styles.inputField} placeholder="Type shi" />
+        <Text style={styles.label}>Phone number</Text>
+        <TextInput style={styles.inputField} placeholder="Type shi" />
         <Text style={styles.label}>Password</Text>
+        <TextInput
+          style={styles.inputField}
+          placeholder="Type shi"
+          secureTextEntry
+        />
+        <Text style={styles.label}>Confirm Password</Text>
         <TextInput
           style={styles.inputField}
           placeholder="Type shi"
@@ -69,17 +77,17 @@ const UserLogin = () => {
 
       <View style={styles.buttonSection}>
         <View style={styles.registerText}>
-          <Text>Don't have an account? </Text>
-          <Link href={"/UserRegister"} style={{ color: "blue" }}>
-            Register
+          <Text>Already have an account? </Text>
+          <Link href={"/UserLogin"} style={{ color: "blue" }}>
+            Login
           </Link>
         </View>
         <Pressable style={authButtonStyle.button}>
-          <Text style={authButtonStyle.buttonText}>Login</Text>
+          <Text style={authButtonStyle.buttonText}>Register</Text>
         </Pressable>
       </View>
     </SafeAreaView>
   );
 };
 
-export default UserLogin;
+export default UserRegister;
