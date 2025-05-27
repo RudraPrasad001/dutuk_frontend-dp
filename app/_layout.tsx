@@ -35,6 +35,7 @@ export default function RootLayout() {
           animation: "fade",
         }}
       />
+      <Stack.Screen name="UserDashboard" options={{ headerShown: false }} />
     </Stack>
   );
 }

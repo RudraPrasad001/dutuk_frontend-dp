@@ -1,5 +1,5 @@
 import authButtonStyle from "@/css/authButtonStyle";
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 import React from "react";
 import {
   Pressable,
@@ -74,7 +74,10 @@ const UserLogin = () => {
             Register
           </Link>
         </View>
-        <Pressable style={authButtonStyle.button}>
+        <Pressable
+          style={authButtonStyle.button}
+          onPress={() => router.push("/UserDashboard")}
+        >
           <Text style={authButtonStyle.buttonText}>Login</Text>
         </Pressable>
       </View>
