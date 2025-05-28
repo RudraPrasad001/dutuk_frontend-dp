@@ -1,4 +1,6 @@
-import authButtonStyle from "@/css/authButtonStyle";
+import authButtonStyle from "@/src/css/authButtonStyle";
+import authInputStyle from "@/src/css/authInputStyle";
+import authLableStyle from "@/src/css/authLableStyle";
 import { Link, router } from "expo-router";
 import React from "react";
 import {
@@ -19,21 +21,6 @@ const UserLogin = () => {
       flex: 1,
       justifyContent: "center",
       alignItems: "center",
-    },
-    label: {
-      fontWeight: "bold",
-      alignSelf: "flex-start",
-      marginLeft: 40,
-      marginBottom: 5,
-      marginTop: 10,
-    },
-    inputField: {
-      borderColor: "gray",
-      borderWidth: 2,
-      borderRadius: 10,
-      padding: 10,
-      marginBottom: 15,
-      width: 300,
     },
     buttonSection: {
       padding: 20,
@@ -57,11 +44,11 @@ const UserLogin = () => {
       </View>
 
       <View style={styles.inputSection}>
-        <Text style={styles.label}>E-mail</Text>
-        <TextInput style={styles.inputField} placeholder="Type shi" />
-        <Text style={styles.label}>Password</Text>
+        <Text style={authLableStyle.label}>E-mail</Text>
+        <TextInput style={authInputStyle.inputField} placeholder="Type shi" />
+        <Text style={authLableStyle.label}>Password</Text>
         <TextInput
-          style={styles.inputField}
+          style={authInputStyle.inputField}
           placeholder="Type shi"
           secureTextEntry
         />

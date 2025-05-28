@@ -1,4 +1,4 @@
-import authButtonStyle from "@/css/authButtonStyle";
+import authButtonStyle from "@/src/css/authButtonStyle";
 import { Link, router } from "expo-router";
 import React from "react";
 import {
