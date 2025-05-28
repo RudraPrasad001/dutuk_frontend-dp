@@ -84,7 +84,7 @@ const UserRegister = () => {
         </View>
         <Pressable
           style={authButtonStyle.button}
-          onPress={() => router.push("/UserAuth")}
+          onPress={() => router.push("/UserDashboard")}
         >
           <Text style={authButtonStyle.buttonText}>Register</Text>
         </Pressable>
