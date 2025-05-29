@@ -1,49 +1,20 @@
-import authButtonStyle from "@/src/css/authButtonStyle";
-import authInputStyle from "@/src/css/authInputStyle";
-import authLableStyle from "@/src/css/authLableStyle";
+import authButtonStyle from "../css/authButtonStyle";
+import authInputStyle from "../css/authInputStyle";
+import authLableStyle from "../css/authLableStyle";
+import authPageStyle from "../css/authPageStyle";
+
 import { Link, router } from "expo-router";
 import React from "react";
-import {
-  Pressable,
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-} from "react-native";
+import { Pressable, SafeAreaView, Text, TextInput, View } from "react-native";
 
 const UserLogin = () => {
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-    },
-    inputSection: {
-      flex: 1,
-      justifyContent: "center",
-      alignItems: "center",
-    },
-    buttonSection: {
-      padding: 20,
-      alignItems: "center",
-    },
-    registerText: {
-      flexDirection: "row",
-      alignItems: "center",
-    },
-    welcomeBackText: {
-      fontSize: 30,
-      marginTop: 50,
-      marginLeft: 35,
-    },
-  });
-
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={authPageStyle.container}>
       <View>
-        <Text style={styles.welcomeBackText}>Welcome back!</Text>
+        <Text style={authPageStyle.headerText}>Welcome back!</Text>
       </View>
 
-      <View style={styles.inputSection}>
+      <View style={authPageStyle.inputSection}>
         <Text style={authLableStyle.label}>E-mail</Text>
         <TextInput style={authInputStyle.inputField} placeholder="Type shi" />
         <Text style={authLableStyle.label}>Password</Text>
@@ -54,8 +25,8 @@ const UserLogin = () => {
         />
       </View>
 
-      <View style={styles.buttonSection}>
-        <View style={styles.registerText}>
+      <View style={authPageStyle.buttonSection}>
+        <View style={authPageStyle.registerText}>
           <Text>Don't have an account? </Text>
           <Link href={"/UserRegister"} style={{ color: "blue" }}>
             Register

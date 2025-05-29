@@ -43,7 +43,7 @@ const UserRegister = () => {
       flexDirection: "row",
       alignItems: "center",
     },
-    welcomeBackText: {
+    headerText: {
       fontSize: 30,
       marginTop: 50,
       marginLeft: 35,
@@ -53,7 +53,7 @@ const UserRegister = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View>
-        <Text style={styles.welcomeBackText}>Let's get started</Text>
+        <Text style={styles.headerText}>Let's get started</Text>
       </View>
 
       <View style={styles.inputSection}>
