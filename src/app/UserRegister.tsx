@@ -1,7 +1,7 @@
-import { Link, router } from "expo-router";
+import { Link } from "expo-router";
 import React from "react";
-import { Pressable, SafeAreaView, Text, TextInput, View } from "react-native";
-import authButtonStyle from "../css/authButtonStyle";
+import { SafeAreaView, Text, TextInput, View } from "react-native";
+import AuthButton from "../components/AuthButton";
 import authInputStyle from "../css/authInputStyle";
 import authLableStyle from "../css/authLableStyle";
 import authPageStyle from "../css/authPageStyle";
@@ -38,12 +38,7 @@ const UserRegister = () => {
             Login
           </Link>
         </View>
-        <Pressable
-          style={authButtonStyle.button}
-          onPress={() => router.push("/UserDashboard")}
-        >
-          <Text style={authButtonStyle.buttonText}>Register</Text>
-        </Pressable>
+        <AuthButton buttonText="Register" route="/UserDashboard" />
       </View>
     </SafeAreaView>
   );
