@@ -2,13 +2,7 @@ import { router } from "expo-router";
 import React from "react";
 import { Pressable, Text, View } from "react-native";
 import authButtonStyle from "../css/authButtonStyle";
-
-type AuthAllowedRoute =
-  | "/"
-  | "/UserAuth"
-  | "/UserDashboard"
-  | "/UserLogin"
-  | "/UserRegister";
+import { AuthAllowedRoute } from "../utils/AuthAllowedRoute";
 
 type AuthButtonProps = {
   buttonText: string;
