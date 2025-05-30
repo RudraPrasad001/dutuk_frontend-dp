@@ -43,7 +43,7 @@ const UserRegister = () => {
           LinkText="Login"
           route="/UserLogin"
         />
-        <AuthButton buttonText="Register" route="/UserDashboard" />
+        <AuthButton buttonText="Register" route="/(tabs)/home" />
       </View>
     </SafeAreaView>
   );
