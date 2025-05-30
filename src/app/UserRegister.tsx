@@ -1,6 +1,6 @@
-import { Link } from "expo-router";
 import React from "react";
 import { SafeAreaView, Text, TextInput, View } from "react-native";
+import AuthAssist from "../components/AuthAssist";
 import AuthButton from "../components/AuthButton";
 import authInputStyle from "../css/authInputStyle";
 import authLableStyle from "../css/authLableStyle";
@@ -38,12 +38,17 @@ const UserRegister = () => {
       </View>
 
       <View style={authPageStyle.buttonSection}>
-        <View style={authPageStyle.assistText}>
+        {/* <View style={authPageStyle.assistText}>
           <Text>Already have an account? </Text>
           <Link href={"/UserLogin"} style={{ color: "blue" }}>
             Login
           </Link>
-        </View>
+        </View> */}
+        <AuthAssist
+          AssistText="Already have an account? "
+          LinkText="Login"
+          route="/UserLogin"
+        />
         <AuthButton buttonText="Register" route="/UserDashboard" />
       </View>
     </SafeAreaView>

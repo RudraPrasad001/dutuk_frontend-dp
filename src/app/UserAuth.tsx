@@ -1,23 +1,22 @@
-import authButtonStyle from "@/src/css/authButtonStyle";
-import { router } from "expo-router";
 import React from "react";
-import { Pressable, Text, View } from "react-native";
+import { View } from "react-native";
+import AuthButton from "../components/AuthButton";
 
 const UserAuth = () => {
   return (
     <View>
-      <Pressable
-        style={authButtonStyle.button}
-        onPress={() => router.push("/UserLogin")}
-      >
-        <Text style={authButtonStyle.buttonText}>Login</Text>
-      </Pressable>
-      <Pressable
+      <AuthButton buttonText="Login" route="/UserLogin" />
+      {/* <Pressable
         style={authButtonStyle.buttonSecondary}
         onPress={() => router.push("/UserRegister")}
       >
         <Text style={authButtonStyle.buttonText}>Register</Text>
-      </Pressable>
+      </Pressable> */}
+      <AuthButton
+        buttonText="Register"
+        route="/UserRegister"
+        buttonColorType="buttonSecondary"
+      />
     </View>
   );
 };

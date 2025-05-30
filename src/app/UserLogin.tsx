@@ -1,9 +1,9 @@
+import AuthAssist from "../components/AuthAssist";
 import AuthButton from "../components/AuthButton";
 import authInputStyle from "../css/authInputStyle";
 import authLableStyle from "../css/authLableStyle";
 import authPageStyle from "../css/authPageStyle";
 
-import { Link } from "expo-router";
 import React from "react";
 import { SafeAreaView, Text, TextInput, View } from "react-native";
 
@@ -29,13 +29,11 @@ const UserLogin = () => {
       </View>
 
       <View style={authPageStyle.buttonSection}>
-        <View style={authPageStyle.assistText}>
-          <Text>Don't have an account? </Text>
-          <Link href={"/UserRegister"} style={{ color: "blue" }}>
-            Register
-          </Link>
-        </View>
-
+        <AuthAssist
+          AssistText="Don't Have an account? "
+          LinkText="Register"
+          route="/UserRegister"
+        />
         <AuthButton buttonText="Login" route="/UserDashboard" />
       </View>
     </SafeAreaView>
