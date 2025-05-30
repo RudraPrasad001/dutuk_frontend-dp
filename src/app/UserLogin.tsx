@@ -16,11 +16,14 @@ const UserLogin = () => {
 
       <View style={authPageStyle.inputSection}>
         <Text style={authLableStyle.label}>E-mail</Text>
-        <TextInput style={authInputStyle.inputField} placeholder="Type shi" />
+        <TextInput
+          style={authInputStyle.inputField}
+          placeholder="Type your email"
+        />
         <Text style={authLableStyle.label}>Password</Text>
         <TextInput
           style={authInputStyle.inputField}
-          placeholder="Type shi"
+          placeholder="Type your password"
           secureTextEntry
         />
       </View>

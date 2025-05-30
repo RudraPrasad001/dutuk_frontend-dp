@@ -14,19 +14,25 @@ const UserRegister = () => {
 
       <View style={authPageStyle.inputSection}>
         <Text style={authLableStyle.label}>E-mail</Text>
-        <TextInput style={authInputStyle.inputField} placeholder="Type shi" />
+        <TextInput
+          style={authInputStyle.inputField}
+          placeholder="Type your email"
+        />
         <Text style={authLableStyle.label}>Phone number</Text>
-        <TextInput style={authInputStyle.inputField} placeholder="Type shi" />
+        <TextInput
+          style={authInputStyle.inputField}
+          placeholder="Type your phone number"
+        />
         <Text style={authLableStyle.label}>Password</Text>
         <TextInput
           style={authInputStyle.inputField}
-          placeholder="Type shi"
+          placeholder="Type your password"
           secureTextEntry
         />
         <Text style={authLableStyle.label}>Confirm Password</Text>
         <TextInput
           style={authInputStyle.inputField}
-          placeholder="Type shi"
+          placeholder="Type your password again"
           secureTextEntry
         />
       </View>
