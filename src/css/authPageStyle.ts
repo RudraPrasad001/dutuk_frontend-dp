@@ -13,7 +13,7 @@ const authPageStyle = StyleSheet.create({
     padding: 20,
     alignItems: "center",
   },
-  registerText: {
+  assistText: {
     flexDirection: "row",
     alignItems: "center",
   },

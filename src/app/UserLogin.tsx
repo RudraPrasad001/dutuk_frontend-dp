@@ -26,7 +26,7 @@ const UserLogin = () => {
       </View>
 
       <View style={authPageStyle.buttonSection}>
-        <View style={authPageStyle.registerText}>
+        <View style={authPageStyle.assistText}>
           <Text>Don't have an account? </Text>
           <Link href={"/UserRegister"} style={{ color: "blue" }}>
             Register
