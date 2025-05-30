@@ -34,7 +34,11 @@ const UserLogin = () => {
           LinkText="Register"
           route="/UserRegister"
         />
-        <AuthButton buttonText="Login" route="/UserDashboard" />
+        <AuthButton
+          buttonText="Login"
+          route="/(tabs)/home"
+          navigationType="replace"
+        />
       </View>
     </SafeAreaView>
   );

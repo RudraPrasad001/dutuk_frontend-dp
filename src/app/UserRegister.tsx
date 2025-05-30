@@ -38,18 +38,12 @@ const UserRegister = () => {
       </View>
 
       <View style={authPageStyle.buttonSection}>
-        {/* <View style={authPageStyle.assistText}>
-          <Text>Already have an account? </Text>
-          <Link href={"/UserLogin"} style={{ color: "blue" }}>
-            Login
-          </Link>
-        </View> */}
         <AuthAssist
           AssistText="Already have an account? "
           LinkText="Login"
           route="/UserLogin"
         />
-        <AuthButton buttonText="Register" route="/UserDashboard" />
+        <AuthButton buttonText="Register" route="/(tabs)/home" />
       </View>
     </SafeAreaView>
   );

@@ -1,6 +1,6 @@
 export type AuthAllowedRoute =
   | "/"
   | "/UserAuth"
-  | "/UserDashboard"
   | "/UserLogin"
-  | "/UserRegister";
+  | "/UserRegister"
+  | "/(tabs)/home";

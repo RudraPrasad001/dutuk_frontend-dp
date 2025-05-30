@@ -10,20 +10,30 @@ type AuthButtonProps = {
   buttonText: string;
   route: AuthAllowedRoute;
   buttonColorType?: ButtonColorType;
+  navigationType?: "push" | "replace";
 };
 
 const AuthButton = ({
   buttonText,
   route,
   buttonColorType = "button",
+  navigationType = "push",
 }: AuthButtonProps) => {
   const buttonStyle = authButtonStyle[buttonColorType];
+
+  const handlePress = () => {
+    if (navigationType === "replace") {
+      router.replace(route);
+    } else {
+      router.push(route);
+    }
+  };
 
   return (
     <View>
       <Pressable
         style={buttonStyle}
-        onPress={() => router.push(route)}
+        onPress={handlePress}
         accessibilityRole="button"
         accessibilityLabel={buttonText}
       >
