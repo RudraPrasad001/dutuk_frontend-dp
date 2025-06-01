@@ -1,4 +1,4 @@
-import authButtonStyle from "@/src/css/authButtonStyle";
+import authButtonStyle from "@/css/authButtonStyle";
 import React, { useState } from "react";
 import {
   Alert,
@@ -13,7 +13,7 @@ import authInputStyle from "../../css/authInputStyle";
 import authLableStyle from "../../css/authLableStyle";
 import authPageStyle from "../../css/authPageStyle";
 
-import registerUser from "@/src/hooks/useRegisterUser";
+import registerUser from "@/hooks/useRegisterUser";
 
 const UserRegister = () => {
   const [email, setEmail] = useState("");

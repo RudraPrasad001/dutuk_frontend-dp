@@ -12,6 +12,6 @@
     ".expo/types/**/*.ts",
     "expo-env.d.ts",
     "src/app/_layout.tsx",
-    "src/utils/supabase.ts"
+    "utils/supabase.ts"
   ]
 }

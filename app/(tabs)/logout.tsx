@@ -1,4 +1,4 @@
-import AuthButton from "@/src/components/AuthButton";
+import AuthButton from "@/components/AuthButton";
 import React from "react";
 import { View } from "react-native";
 
