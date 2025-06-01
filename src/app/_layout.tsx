@@ -6,7 +6,7 @@ export default function RootLayout() {
       <Stack.Screen name="index" options={{ headerShown: false }} />
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
       <Stack.Screen
-        name="UserLogin"
+        name="auth/UserLogin"
         options={{
           title: "",
           headerStyle: {
@@ -21,7 +21,7 @@ export default function RootLayout() {
         }}
       />
       <Stack.Screen
-        name="UserRegister"
+        name="auth/UserRegister"
         options={{
           title: "",
           headerStyle: {
@@ -35,7 +35,6 @@ export default function RootLayout() {
           animation: "fade",
         }}
       />
-      <Stack.Screen name="UserDashboard" options={{ headerShown: false }} />
     </Stack>
   );
 }

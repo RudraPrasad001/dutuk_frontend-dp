@@ -1,10 +1,10 @@
 import React from "react";
 import { SafeAreaView, Text, TextInput, View } from "react-native";
-import AuthAssist from "../components/AuthAssist";
-import AuthButton from "../components/AuthButton";
-import authInputStyle from "../css/authInputStyle";
-import authLableStyle from "../css/authLableStyle";
-import authPageStyle from "../css/authPageStyle";
+import AuthAssist from "../../components/AuthAssist";
+import AuthButton from "../../components/AuthButton";
+import authInputStyle from "../../css/authInputStyle";
+import authLableStyle from "../../css/authLableStyle";
+import authPageStyle from "../../css/authPageStyle";
 const UserRegister = () => {
   return (
     <SafeAreaView style={authPageStyle.container}>
@@ -41,7 +41,7 @@ const UserRegister = () => {
         <AuthAssist
           AssistText="Already have an account? "
           LinkText="Login"
-          route="/UserLogin"
+          route="/auth/UserLogin"
         />
         <AuthButton buttonText="Register" route="/(tabs)/home" />
       </View>
