@@ -1,11 +1,37 @@
-import React from "react";
-import { SafeAreaView, Text, TextInput, View } from "react-native";
+import authButtonStyle from "@/src/css/authButtonStyle";
+import React, { useState } from "react";
+import {
+  Alert,
+  Pressable,
+  SafeAreaView,
+  Text,
+  TextInput,
+  View,
+} from "react-native";
 import AuthAssist from "../../components/AuthAssist";
-import AuthButton from "../../components/AuthButton";
 import authInputStyle from "../../css/authInputStyle";
 import authLableStyle from "../../css/authLableStyle";
 import authPageStyle from "../../css/authPageStyle";
+
+import registerUser from "@/src/hooks/useRegisterUser";
+
 const UserRegister = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  const useUserRegistration = (
+    email: string,
+    password: string,
+    confirmPassword: string
+  ) => {
+    if (password != confirmPassword) {
+      Alert.alert("Password ain't matching");
+    } else {
+      registerUser(email, password);
+    }
+  };
+
   return (
     <SafeAreaView style={authPageStyle.container}>
       <View>
@@ -17,22 +43,20 @@ const UserRegister = () => {
         <TextInput
           style={authInputStyle.inputField}
           placeholder="Type your email"
-        />
-        <Text style={authLableStyle.label}>Phone number</Text>
-        <TextInput
-          style={authInputStyle.inputField}
-          placeholder="Type your phone number"
+          onChangeText={setEmail}
         />
         <Text style={authLableStyle.label}>Password</Text>
         <TextInput
           style={authInputStyle.inputField}
           placeholder="Type your password"
+          onChangeText={setPassword}
           secureTextEntry
         />
         <Text style={authLableStyle.label}>Confirm Password</Text>
         <TextInput
           style={authInputStyle.inputField}
           placeholder="Type your password again"
+          onChangeText={setConfirmPassword}
           secureTextEntry
         />
       </View>
@@ -43,7 +67,13 @@ const UserRegister = () => {
           LinkText="Login"
           route="/auth/UserLogin"
         />
-        <AuthButton buttonText="Register" route="/(tabs)/home" />
+        <Pressable
+          style={authButtonStyle.button}
+          onPress={() => useUserRegistration(email, password, confirmPassword)}
+          accessibilityRole="button"
+        >
+          <Text style={authButtonStyle.buttonText}>Register</Text>
+        </Pressable>
       </View>
     </SafeAreaView>
   );
