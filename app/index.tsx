@@ -1,6 +1,5 @@
 import { View } from "react-native";
-import UserAuth from "./UserAuth";
-
+import UserAuth from "./auth/UserAuth";
 export default function Index() {
   return (
     <View

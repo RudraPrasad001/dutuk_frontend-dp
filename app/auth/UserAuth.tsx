@@ -1,14 +1,14 @@
 import React from "react";
 import { View } from "react-native";
-import AuthButton from "../components/AuthButton";
+import AuthButton from "../../components/AuthButton";
 
 const UserAuth = () => {
   return (
     <View>
-      <AuthButton buttonText="Login" route="/UserLogin" />
+      <AuthButton buttonText="Login" route="/auth/UserLogin" />
       <AuthButton
         buttonText="Register"
-        route="/UserRegister"
+        route="/auth/UserRegister"
         buttonColorType="buttonSecondary"
       />
     </View>

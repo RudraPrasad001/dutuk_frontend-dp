@@ -19,7 +19,7 @@ const authPageStyle = StyleSheet.create({
   },
   headerText: {
     fontSize: 30,
-    marginTop: 50,
+    marginTop: 20,
     marginLeft: 35,
   },
 });
