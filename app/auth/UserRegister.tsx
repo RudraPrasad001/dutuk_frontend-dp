@@ -13,8 +13,8 @@ import authInputStyle from "../../css/authInputStyle";
 import authLableStyle from "../../css/authLableStyle";
 import authPageStyle from "../../css/authPageStyle";
 
+import googleLogin from "@/hooks/useGoogleAuth";
 import registerUser from "@/hooks/useRegisterUser";
-
 const UserRegister = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -59,6 +59,12 @@ const UserRegister = () => {
           onChangeText={setConfirmPassword}
           secureTextEntry
         />
+        <Pressable
+          onPress={() => googleLogin()}
+          style={authButtonStyle.buttonSecondary}
+        >
+          <Text style={authButtonStyle.buttonText}>Use Google</Text>
+        </Pressable>
       </View>
 
       <View style={authPageStyle.buttonSection}>
