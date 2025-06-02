@@ -20,13 +20,12 @@ const googleLogin = async () => {
         }
       );
 
-      // Immediately redirect to home after user interaction regardless of result type
       router.replace("/(tabs)/home");
     } else {
-      router.replace("/(tabs)/home"); // fallback
+      router.replace("/(tabs)/home");
     }
   } catch {
-    router.replace("/(tabs)/home"); // fallback on error
+    router.replace("/(tabs)/home");
   }
 };
 

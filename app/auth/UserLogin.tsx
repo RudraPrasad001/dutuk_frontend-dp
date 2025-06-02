@@ -6,6 +6,7 @@ import authPageStyle from "../../css/authPageStyle";
 
 import loginUser from "@/hooks/useLoginUser";
 
+import googleLogin from "@/hooks/useGoogleAuth";
 import React, { useState } from "react";
 import { Pressable, SafeAreaView, Text, TextInput, View } from "react-native";
 
@@ -33,6 +34,12 @@ const UserLogin = () => {
           onChangeText={setPassword}
           secureTextEntry
         />
+        <Pressable
+          style={authButtonStyle.buttonSecondary}
+          onPress={() => googleLogin()}
+        >
+          <Text style={authButtonStyle.buttonText}>Use google</Text>
+        </Pressable>
       </View>
 
       <View style={authPageStyle.buttonSection}>
