@@ -1,17 +1,16 @@
-import authButtonStyle from "@/css/authButtonStyle";
+import AuthButton from "@/components/AuthButton";
 import logoutUser from "@/hooks/useLogoutUser";
 import React from "react";
-import { Pressable, Text, View } from "react-native";
+import { View } from "react-native";
 
 const logout = () => {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Pressable
-        style={authButtonStyle.buttonSecondary}
+      <AuthButton
+        buttonText="Logout"
+        buttonColorType="buttonSecondary"
         onPress={() => logoutUser()}
-      >
-        <Text style={authButtonStyle.buttonText}>Logout</Text>
-      </Pressable>
+      />
     </View>
   );
 };
