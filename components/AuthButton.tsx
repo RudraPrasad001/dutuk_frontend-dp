@@ -2,30 +2,39 @@ import { router } from "expo-router";
 import React from "react";
 import { Pressable, Text, View } from "react-native";
 import authButtonStyle from "../css/authButtonStyle";
-import { AuthAllowedRoute } from "../utils/AuthAllowedRoute";
 
 type ButtonColorType = "button" | "buttonSecondary";
 
+type ValidRoute = Parameters<typeof router.push>[0];
+
 type AuthButtonProps = {
   buttonText: string;
-  route: AuthAllowedRoute;
+  route?: ValidRoute;
   buttonColorType?: ButtonColorType;
   navigationType?: "push" | "replace";
+  onPress?: () => void;
 };
 
-const AuthButton = ({
+const AuthButton: React.FC<AuthButtonProps> = ({
   buttonText,
   route,
   buttonColorType = "button",
   navigationType = "push",
-}: AuthButtonProps) => {
+  onPress,
+}) => {
   const buttonStyle = authButtonStyle[buttonColorType];
 
   const handlePress = () => {
-    if (navigationType === "replace") {
-      router.replace(route);
-    } else {
-      router.push(route);
+    if (onPress) {
+      onPress();
+    }
+
+    if (route) {
+      if (navigationType === "replace") {
+        router.replace(route);
+      } else {
+        router.push(route);
+      }
     }
   };
 
