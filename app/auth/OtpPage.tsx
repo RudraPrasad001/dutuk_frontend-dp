@@ -1,9 +1,9 @@
-import authButtonStyle from "@/css/authButtonStyle";
+import AuthButton from "@/components/AuthButton";
 import authOtpStyle from "@/css/authOtpStyle";
 import verifyOTP from "@/hooks/useVerifyOTP";
 import { useLocalSearchParams } from "expo-router";
 import React, { useState } from "react";
-import { Pressable, Text, View } from "react-native";
+import { Text, View } from "react-native";
 import {
   CodeField,
   Cursor,
@@ -52,13 +52,11 @@ const OtpPage = () => {
           </View>
         )}
       />
-
-      <Pressable
+      <AuthButton
+        buttonText="Verify"
+        buttonColorType="buttonSecondary"
         onPress={() => verifyOTP(email, otp)}
-        style={[authButtonStyle.button, { marginTop: 30 }]}
-      >
-        <Text style={authButtonStyle.buttonText}>Verify</Text>
-      </Pressable>
+      />
     </View>
   );
 };

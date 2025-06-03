@@ -1,11 +1,11 @@
 import AuthAssist from "@/components/AuthAssist";
-import authButtonStyle from "@/css/authButtonStyle";
+import AuthButton from "@/components/AuthButton";
 import authEmailPageStyle from "@/css/authEmailPageStyle";
 import authInputStyle from "@/css/authInputStyle";
 import authLableStyle from "@/css/authLableStyle";
 import registerUser from "@/hooks/useRegisterUser";
 import React, { useState } from "react";
-import { Alert, Pressable, Text, TextInput, View } from "react-native";
+import { Alert, Text, TextInput, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const EmailAuth = () => {
@@ -57,13 +57,10 @@ const EmailAuth = () => {
           LinkText="Login"
           route="/auth/UserLogin"
         />
-        <Pressable
-          style={authButtonStyle.button}
+        <AuthButton
+          buttonText="Register"
           onPress={() => useUserRegistration(email, password, confirmPassword)}
-          accessibilityRole="button"
-        >
-          <Text style={authButtonStyle.buttonText}>Register</Text>
-        </Pressable>
+        />
       </View>
     </SafeAreaView>
   );

@@ -1,4 +1,3 @@
-import authButtonStyle from "@/css/authButtonStyle";
 import AuthAssist from "../../components/AuthAssist";
 import authInputStyle from "../../css/authInputStyle";
 import authLableStyle from "../../css/authLableStyle";
@@ -6,9 +5,10 @@ import authPageStyle from "../../css/authPageStyle";
 
 import loginUser from "@/hooks/useLoginUser";
 
+import AuthButton from "@/components/AuthButton";
 import googleLogin from "@/hooks/useGoogleAuth";
 import React, { useState } from "react";
-import { Pressable, SafeAreaView, Text, TextInput, View } from "react-native";
+import { SafeAreaView, Text, TextInput, View } from "react-native";
 
 const UserLogin = () => {
   const [email, setEmail] = useState("");
@@ -34,12 +34,11 @@ const UserLogin = () => {
           onChangeText={setPassword}
           secureTextEntry
         />
-        <Pressable
-          style={authButtonStyle.buttonSecondary}
+        <AuthButton
+          buttonText="Use Google"
+          buttonColorType="buttonSecondary"
           onPress={() => googleLogin()}
-        >
-          <Text style={authButtonStyle.buttonText}>Use google</Text>
-        </Pressable>
+        />
       </View>
 
       <View style={authPageStyle.buttonSection}>
@@ -48,12 +47,11 @@ const UserLogin = () => {
           LinkText="Register"
           route="/auth/UserRegister"
         />
-        <Pressable
-          style={authButtonStyle.button}
+        <AuthButton
+          buttonText="Login"
+          buttonColorType="button"
           onPress={() => loginUser(email, password)}
-        >
-          <Text style={authButtonStyle.buttonText}>Login</Text>
-        </Pressable>
+        />
       </View>
     </SafeAreaView>
   );

@@ -5,7 +5,11 @@ import AuthButton from "../../components/AuthButton";
 const UserAuth = () => {
   return (
     <View>
-      <AuthButton buttonText="Login" route="/auth/UserLogin" />
+      <AuthButton
+        buttonText="Login"
+        route="/auth/UserLogin"
+        buttonColorType="button"
+      />
       <AuthButton
         buttonText="Register"
         route="/auth/UserRegister"

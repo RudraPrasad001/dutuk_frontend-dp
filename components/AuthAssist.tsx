@@ -1,11 +1,11 @@
-import { AuthAllowedRoute } from "@/utils/AuthAllowedRoute";
 import { router } from "expo-router";
 import React from "react";
 import { Pressable, Text, View } from "react-native";
+import { ValidRoute } from "./AuthButton";
 
 type AuthAssistProp = {
   AssistText: string;
-  route: AuthAllowedRoute;
+  route: ValidRoute;
   LinkText: string;
 };
 
