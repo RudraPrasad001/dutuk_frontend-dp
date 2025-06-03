@@ -5,7 +5,8 @@ import authButtonStyle from "../css/authButtonStyle";
 
 type ButtonColorType = "button" | "buttonSecondary";
 
-type ValidRoute = Parameters<typeof router.push>[0];
+// TODO : Should make these into a seperate utils for cleaner code
+export type ValidRoute = Parameters<typeof router.push>[0];
 
 type AuthButtonProps = {
   buttonText: string;
