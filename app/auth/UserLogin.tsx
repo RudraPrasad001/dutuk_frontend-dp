@@ -25,12 +25,14 @@ const UserLogin = () => {
         <TextInput
           style={authInputStyle.inputField}
           placeholder="Type your email"
+          placeholderTextColor="#999"
           onChangeText={setEmail}
         />
         <Text style={authLableStyle.label}>Password</Text>
         <TextInput
           style={authInputStyle.inputField}
           placeholder="Type your password"
+          placeholderTextColor="#999"
           onChangeText={setPassword}
           secureTextEntry
         />

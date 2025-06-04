@@ -6,6 +6,7 @@ const authInputStyle = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 10,
     padding: 10,
+    color:'black',
     marginBottom: 15,
     width: 300,
   },
