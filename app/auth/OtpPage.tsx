@@ -56,6 +56,8 @@ const OtpPage = () => {
         buttonText="Verify"
         buttonColorType="buttonSecondary"
         onPress={() => verifyOTP(email, otp)}
+        width={150}
+        height={75}
       />
     </View>
   );
