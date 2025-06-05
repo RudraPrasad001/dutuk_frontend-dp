@@ -24,9 +24,9 @@ const OtpPage = () => {
   });
 
   const params = useLocalSearchParams();
-  const email = Array.isArray(params.email)
-    ? params.email[0]
-    : params.email?.toString();
+  console.log(params);
+  const email = params.email;
+  console.log(email);
 
   useEffect(() => {
     let interval: number;

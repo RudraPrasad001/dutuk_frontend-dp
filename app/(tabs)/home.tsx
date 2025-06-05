@@ -1,3 +1,4 @@
+import NavBar from "@/components/NavBar";
 import React from "react";
 import { Text, View } from "react-native";
 
@@ -22,11 +23,14 @@ const Home = () => {
   // }, []);
 
   return (
+    <View style={{flex:1,flexDirection:"row"}}>
+      <NavBar  />
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <Text style={{ fontWeight: "bold", fontSize: 50 }}>
         {/* {email ?? "Loading..."} */}
         Home
       </Text>
+    </View>
     </View>
   );
 };
