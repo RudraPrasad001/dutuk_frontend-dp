@@ -1,8 +1,9 @@
 import AuthButton from "@/components/AuthButton";
 import authOtpStyle from "@/css/authOtpStyle";
+import sendOTP from "@/hooks/useSendOTP";
 import verifyOTP from "@/hooks/useVerifyOTP";
 import { useLocalSearchParams } from "expo-router";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import {
   CodeField,
@@ -15,6 +16,7 @@ const CELL_COUNT = 6;
 
 const OtpPage = () => {
   const [otp, setOtp] = useState("");
+  const [cooldown, setCooldown] = useState(60);
   const ref = useBlurOnFulfill({ value: otp, cellCount: CELL_COUNT });
   const [props, getCellOnLayoutHandler] = useClearByFocusCell({
     value: otp,
@@ -26,8 +28,20 @@ const OtpPage = () => {
     ? params.email[0]
     : params.email?.toString();
 
+  useEffect(() => {
+    let interval: number;
+    if (cooldown > 0) {
+      interval = setInterval(() => {
+        setCooldown((prev) => prev - 1);
+      }, 1000);
+    }
+    return () => clearInterval(interval);
+  }, [cooldown]);
+
   const handleResend = () => {
-    console.log("Resend OTP to:", email);
+    if (cooldown > 0) return;
+    sendOTP(email);
+    setCooldown(60);
   };
 
   return (
@@ -59,8 +73,12 @@ const OtpPage = () => {
         )}
       />
 
-      <TouchableOpacity onPress={handleResend}>
-        <Text style={authOtpStyle.resendText}>Resend Code</Text>
+      <TouchableOpacity onPress={handleResend} disabled={cooldown > 0}>
+        <Text
+          style={[authOtpStyle.resendText, cooldown > 0 && { opacity: 0.5 }]}
+        >
+          {cooldown > 0 ? `Resend Code (${cooldown}s)` : "Resend Code"}
+        </Text>
       </TouchableOpacity>
 
       <View style={authOtpStyle.buttonWrapper}>
