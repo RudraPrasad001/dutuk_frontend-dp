@@ -7,7 +7,7 @@ const Index= ()=>{
         <View style={profileSettingsMenuStyle.container}>
             <Text style={profileSettingsMenuStyle.title}>Profile Settings</Text>
             <View style={profileSettingsMenuStyle.optionsView}>
-                <Link style={profileSettingsMenuStyle.options} href='/profile/profileSettings/changePassword' >Change Password</Link>
+                <Link style={profileSettingsMenuStyle.options} href={{pathname:'/profile/profileSettings/changePassword',params:{granted:"false"}}} >Change Password</Link>
                 <Link style={profileSettingsMenuStyle.options} href='/profile/profileSettings/changeUsername' >Change Username</Link>
             </View>
         </View>

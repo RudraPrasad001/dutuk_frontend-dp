@@ -1,29 +1,55 @@
 import resetPasswordStyles from "@/css/resetPasswordStyle";
 import getUserEmail from "@/hooks/useGetUserEmail";
 import getUserID from "@/hooks/useGetUserId";
+import sendOtp from "@/hooks/useSendOtp";
 import { supabase } from "@/utils/supabase";
-import { useEffect, useState } from "react";
-import { Alert, Pressable, Text, TextInput, View } from "react-native";
+import { router, useFocusEffect, useLocalSearchParams } from "expo-router";
+import { useCallback, useEffect, useState } from "react";
+import { Alert, BackHandler, Pressable, Text, TextInput, View } from "react-native";
 
 
 const ChangePassword = ()=>{
 
     const styles = resetPasswordStyles;
 
-    const [userId,setUserId]=  useState<string|undefined>();
+    const [localUserId,setUserId]=  useState<string|undefined>();
     const [userEmail,setUserEmail]=  useState<string|undefined>();
     const [newPassword,setNewPassword] = useState<string|undefined>();
     const [oldPassword,setOldPassword] = useState<string|undefined>();
     const [reNewPassword,setReNewPassword] = useState<string|undefined>();
+    let {granted} = useLocalSearchParams();
+    let {paramNewPassword,paramOldPassword,paramReNewPassword,userId}=useLocalSearchParams();
+    let isGranted = "true"===granted
 
-    const getInfo = async()=>{
-        let id = await getUserID();
-        let email  = await getUserEmail();
-        setUserEmail(email);
-        setUserId(id);
+  useFocusEffect(
+    useCallback(() => {
+      const onBackPress = () => {
+        router.replace("/(tabs)/home"); 
+        return true;
+      };
+
+     const listener= BackHandler.addEventListener("hardwareBackPress", onBackPress);
+
+      return () =>
+        listener.remove();
+    }, [])
+  );
+ 
+
+    const changePasswordTry = async()=>{
+        if(typeof userEmail ==='string'){
+            console.log(`THE EMAIL SENT IS ${userEmail}`);
+            await sendOtp(userEmail);
+            router.push({pathname:`/profile/profileSettings/changePasswordOtp`,params:{email:userEmail,oldPassword,newPassword,reNewPassword,userId:localUserId}});
     }
-    const changePassword = async()=>{
-        if(typeof userId!=='string') return Alert.alert("USER NOT FOUND");
+    }
+
+    const changePassword = async(newPassword:string,oldPassword:string,reNewPassword:string,userId:string,userEmail:string)=>{
+        
+        if(typeof userId!=='string'){
+            console.log("main error" + userId)
+        return Alert.alert("USER NOT FOUND");
+        }
 
         if(newPassword?.length===0 || oldPassword?.length===0 ||reNewPassword?.length===0 ){
             return Alert.alert("Enter All the Fields");
@@ -41,52 +67,48 @@ const ChangePassword = ()=>{
             } else if (message.includes("email not confirmed")) {
             Alert.alert(
                 "Login Failed",
-                "Please verify your email before logging in."
+                "Please verify your email before logging in"
             );
             } else {
             Alert.alert("Login Failed", error.message);
             }
-        setNewPassword('');
-        setOldPassword('');
-        setReNewPassword('');
             return;
         }
         else{
             if(newPassword !==reNewPassword){
-        setNewPassword('');
-        setOldPassword('');
-        setReNewPassword('');
                return Alert.alert("New Passwords do not Match");
             }
             if(newPassword===oldPassword){
-        setNewPassword('');
-        setOldPassword('');
-        setReNewPassword('');
                return Alert.alert("New password cannot be the same as the old password!");
             }
         }
         let info = await supabase.auth.updateUser({password:newPassword})
-        if(info.error !=null){
-        setNewPassword('');
-        setOldPassword('');
-        setReNewPassword('');
+        if(info.error !=null) {
            return Alert.alert(info.error.message);
         }
         Alert.alert("Password Changed Successfully");
-        setNewPassword('');
-        setOldPassword('');
-        setReNewPassword('');
     }else{
+        console.log(userEmail + " "+oldPassword);
         Alert.alert("Error,Cannot Change Password");
-        setNewPassword('');
-        setOldPassword('');
-        setReNewPassword('');
     }
+    }
+    const helper = async()=>{
+        
+        let id = await getUserID();
+        let email  = await getUserEmail();
+        setUserEmail(email);
+        setUserId(id)
+
+        if(isGranted && typeof paramNewPassword==='string' && typeof paramOldPassword==='string' && typeof paramReNewPassword==='string' && typeof userId ==='string' && typeof email==='string'){
+           isGranted=false;
+           await changePassword(paramNewPassword,paramOldPassword,paramReNewPassword,userId,email);
+        }
     }
     useEffect(()=>{
-        getInfo();
-    },[]);
-    if(typeof userId ==='string' && typeof userEmail ==='string'){
+         helper();
+        }
+    ,[]);
+    if(typeof localUserId ==='string' && typeof userEmail ==='string'){
     return(
     <View style={styles.container}>
         <Text style={styles.title}>Change Password</Text>
@@ -114,7 +136,7 @@ const ChangePassword = ()=>{
             placeholderTextColor="#999"
             onChangeText={(val)=>setReNewPassword(val)}
         />
-        <Pressable style={styles.button} onPress={() => changePassword()}>
+        <Pressable style={styles.button} onPress={() => changePasswordTry()}>
         <Text style={styles.buttonText}>Change Password</Text>
         </Pressable>
 
