@@ -3,7 +3,7 @@ import authOtpStyle from "@/css/authOtpStyle";
 import verifyOTP from "@/hooks/useVerifyOTP";
 import { useLocalSearchParams } from "expo-router";
 import React, { useState } from "react";
-import { Text, View } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 import {
   CodeField,
   Cursor,
@@ -11,7 +11,6 @@ import {
   useClearByFocusCell,
 } from "react-native-confirmation-code-field";
 
-// TODO: Temporary solution, need to add a config or whatever to have flexibility
 const CELL_COUNT = 6;
 
 const OtpPage = () => {
@@ -27,9 +26,16 @@ const OtpPage = () => {
     ? params.email[0]
     : params.email?.toString();
 
+  const handleResend = () => {
+    console.log("Resend OTP to:", email);
+  };
+
   return (
     <View style={authOtpStyle.container}>
-      <Text style={authOtpStyle.title}>Enter the OTP</Text>
+      <Text style={authOtpStyle.title}>Verify Your Email</Text>
+      <Text style={authOtpStyle.subtitle}>
+        Enter the 6-digit code sent to your email
+      </Text>
 
       <CodeField
         ref={ref}
@@ -52,13 +58,20 @@ const OtpPage = () => {
           </View>
         )}
       />
-      <AuthButton
-        buttonText="Verify"
-        buttonColorType="buttonSecondary"
-        onPress={() => verifyOTP(email, otp)}
-        width={150}
-        height={75}
-      />
+
+      <TouchableOpacity onPress={handleResend}>
+        <Text style={authOtpStyle.resendText}>Resend Code</Text>
+      </TouchableOpacity>
+
+      <View style={authOtpStyle.buttonWrapper}>
+        <AuthButton
+          buttonText="Verify"
+          buttonColorType="buttonSecondary"
+          onPress={() => verifyOTP(email, otp)}
+          width={140}
+          height={60}
+        />
+      </View>
     </View>
   );
 };
