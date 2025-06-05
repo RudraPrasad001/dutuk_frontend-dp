@@ -1,11 +1,18 @@
 import { router } from "expo-router";
 import React from "react";
-import { Pressable, Text, View } from "react-native";
+import {
+  DimensionValue,
+  Pressable,
+  StyleProp,
+  Text,
+  View,
+  ViewStyle,
+} from "react-native";
 import authButtonStyle from "../css/authButtonStyle";
 
 type ButtonColorType = "button" | "buttonSecondary";
 
-// TODO : Should make these into a seperate utils for cleaner code
+// TODO: Should make these into a separate utils for cleaner code
 export type ValidRoute = Parameters<typeof router.push>[0];
 
 type AuthButtonProps = {
@@ -14,6 +21,8 @@ type AuthButtonProps = {
   buttonColorType?: ButtonColorType;
   navigationType?: "push" | "replace";
   onPress?: () => void;
+  width?: DimensionValue;
+  height?: DimensionValue;
 };
 
 const AuthButton: React.FC<AuthButtonProps> = ({
@@ -22,20 +31,21 @@ const AuthButton: React.FC<AuthButtonProps> = ({
   buttonColorType = "button",
   navigationType = "push",
   onPress,
+  width,
+  height,
 }) => {
-  const buttonStyle = authButtonStyle[buttonColorType];
+  const baseStyle = authButtonStyle[buttonColorType];
+  const buttonStyle: StyleProp<ViewStyle> = {
+    ...baseStyle,
+    ...(width !== undefined && { width }),
+    ...(height !== undefined && { height }),
+  };
 
   const handlePress = () => {
-    if (onPress) {
-      onPress();
-    }
+    onPress?.();
 
     if (route) {
-      if (navigationType === "replace") {
-        router.replace(route);
-      } else {
-        router.push(route);
-      }
+      navigationType === "replace" ? router.replace(route) : router.push(route);
     }
   };
 
