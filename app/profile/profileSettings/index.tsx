@@ -1,62 +1,18 @@
-import { Link } from "expo-router";
+import RouteAssist from "@/components/RouteAssist";
 import { StyleSheet, Text, View } from "react-native";
-
 const Index = () => {
   return (
     <View style={profileSettingsMenuStyle.container}>
       <Text style={profileSettingsMenuStyle.title}>Profile Settings</Text>
       <View style={profileSettingsMenuStyle.optionsView}>
-        <Link
-          style={profileSettingsMenuStyle.options}
-          href="/profile/profileSettings/companysBasicInfo"
-        >
-          Company's Basic Information
-        </Link>
-        <Link
-          style={profileSettingsMenuStyle.options}
-          href="/profile/profileSettings/documentVerification"
-        >
-          Document Verification
-        </Link>
-        <Link
-          style={profileSettingsMenuStyle.options}
-          href={{
-            pathname: "/profile/profileSettings/changePasswordOtp",
-            params: { granted: "false" },
-          }}
-        >
-          Change Password
-        </Link>
-        <Link
-          style={profileSettingsMenuStyle.options}
-          href="/profile/profileSettings/changeUsername"
-        >
-          Change Username
-        </Link>
-        <Link
-          style={profileSettingsMenuStyle.options}
-          href="/profile/profileSettings/historyAndHighlights"
-        >
-          History & Highlights
-        </Link>
-        <Link
-          style={profileSettingsMenuStyle.options}
-          href="/profile/profileSettings/helpcenter"
-        >
-          Help Center
-        </Link>
-        <Link
-          style={profileSettingsMenuStyle.options}
-          href="/profile/profileSettings/about"
-        >
-          About
-        </Link>
-        <Link
-          style={profileSettingsMenuStyle.options}
-          href="/profile/profileSettings/logout"
-        >
-          Logout
-        </Link>
+        <RouteAssist path={"/profile/profileSettings/companysBasicInfo"} text={"Company's Basic Information"} />
+        <RouteAssist path={"/profile/profileSettings/documentVerification"} text={"Document Verification"} />
+        <RouteAssist path={"/profile/profileSettings/changePasswordOtp"} text={"Change Password"} />
+        <RouteAssist path={"/profile/profileSettings/changeUsername"} text={"Chaange Username"} />
+        <RouteAssist path={"/profile/profileSettings/historyAndHighlights"} text={"History & Highlights"} />
+        <RouteAssist path={"/profile/profileSettings/helpcenter"} text={"Help Center"} />
+        <RouteAssist path={"/profile/profileSettings/about"} text={"About"} />
+        <RouteAssist path={"/profile/profileSettings/logout"} text={"Logout"} />
       </View>
     </View>
   );
