@@ -8,6 +8,18 @@ const Index = () => {
       <View style={profileSettingsMenuStyle.optionsView}>
         <Link
           style={profileSettingsMenuStyle.options}
+          href="/profile/profileSettings/companysBasicInfo"
+        >
+          Company's Basic Information
+        </Link>
+        <Link
+          style={profileSettingsMenuStyle.options}
+          href="/profile/profileSettings/documentVerification"
+        >
+          Document Verification
+        </Link>
+        <Link
+          style={profileSettingsMenuStyle.options}
           href={{
             pathname: "/profile/profileSettings/changePasswordOtp",
             params: { granted: "false" },
@@ -20,6 +32,30 @@ const Index = () => {
           href="/profile/profileSettings/changeUsername"
         >
           Change Username
+        </Link>
+        <Link
+          style={profileSettingsMenuStyle.options}
+          href="/profile/profileSettings/historyAndHighlights"
+        >
+          History & Highlights
+        </Link>
+        <Link
+          style={profileSettingsMenuStyle.options}
+          href="/profile/profileSettings/helpcenter"
+        >
+          Help Center
+        </Link>
+        <Link
+          style={profileSettingsMenuStyle.options}
+          href="/profile/profileSettings/about"
+        >
+          About
+        </Link>
+        <Link
+          style={profileSettingsMenuStyle.options}
+          href="/profile/profileSettings/logout"
+        >
+          Logout
         </Link>
       </View>
     </View>
